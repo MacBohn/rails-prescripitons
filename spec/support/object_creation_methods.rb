@@ -15,5 +15,7 @@ def create_patient(overrides = {})
 end
 
 def create_medication(overrides = {})
-  Medication.create!({}.merge(overrides))
+  Medication.create!({
+    name: "Advil"
+  }.merge(overrides))
 end

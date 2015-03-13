@@ -1,0 +1,24 @@
+
+<div class ="page-header">
+  <h2><%= full_name(@patient) %></h2>
+</div>
+<div class="left">
+Prescriptions
+<%= link_to "Add Prescription", new_patient_prescription_path(@patient), class: "pull-right" %>
+</div>
+<table class = "table table-bordered table-striped">
+<thead>
+  <tr>
+    <th>Medication</th><th>Dosage / Schedule</th><th>Dates</th>
+  </tr>
+</thead>
+<tbody>
+    <% @patient.prescriptions.each do |prescription| %>
+  <tr>
+    <td><%= prescription.medication.name %></td>
+    <td><%= prescription.dosage %><%= prescription.schedule %></td>
+      <td><%= prescription.starts_on %>  - <%= prescription.ends_on %></td>
+  </tr>
+  <% end %>
+</tbody>
+</table>

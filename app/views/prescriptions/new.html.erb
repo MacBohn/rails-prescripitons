@@ -1,0 +1,57 @@
+<h1>Add a subscription to <%= full_name(@patient) %></h1>
+<% if @prescription.errors.present? %>
+<div class="alert alert-danger">
+  <% @prescription.errors.full_messages.each do |error| %>
+  <ul>
+    <div class="errors">
+      <li><%= error %></li>
+    </div>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+
+<%= form_for [@patient, @prescription] do |f| %>
+
+<div class ="form-group">
+  <div class="col-sm-8">
+    <%= f.label :medication, class: "col-sm-2 control-label"%>
+    <%= f.collection_select :medication_id, Medication.all, :id, :name, include_blank:'Please choose prescription'%><br >
+  </div>
+</div>
+
+<div class ="form-group">
+  <div class="col-sm-8">
+    <%= f.label :dosage, class: "col-sm-2 control-label" %>
+    <%= f.text_field :dosage, placeholder: "example 5ml or 3 pills" %><br >
+  </div>
+</div>
+
+<div class ="form-group">
+  <div class="col-sm-8">
+    <%= f.label :schedule, class: "col-sm-2 control-label" %>
+    <%=  f.text_field :schedule, placeholder: "Every 4 hours" %><br >
+  </div>
+</div>
+
+<div class ="form-group">
+  <div class="col-sm-8">
+    <%= f.label :starts_on, class: "col-sm-2 control-label"  %>
+    <%= f.date_field :starts_on %><br >
+  </div>
+</div>
+
+<div class ="form-group">
+  <div class="col-sm-8">
+    <%= f.label :ends_on, class: "col-sm-2 control-label" %>
+    <%= f.date_field :ends_on %><br >
+  </div>
+</div>
+<div class ="form-group">
+  <div class="col-sm-12">
+    <%= f.submit "Create Prescription" %>
+  </div>
+</div>
+<% end %>

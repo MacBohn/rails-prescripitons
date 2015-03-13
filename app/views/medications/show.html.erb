@@ -1,0 +1,27 @@
+<div class ="page-header">
+  <h1><%= @medication.name %></h1>
+</div>
+
+
+<h2>Prescriptions</h2>
+
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Patient</th>
+      <th>Dosage / Schedule</th>
+      <th>Dates</th>
+      <th>Prescribed By</th>
+    </tr>
+  </thead>
+<tbody>
+  <tr>
+  <% @medication.prescriptions.each do |prescription| %>
+    <td><%= prescription.patient.full_name %></td>
+    <td><%= prescription.dosage %> / <%= prescription.schedule %> </td>
+    <td><%= prescription.starts_on %> / <%= prescription.ends_on %></td>
+  </tr>
+  <% end %>
+</tbody>
+</table>
